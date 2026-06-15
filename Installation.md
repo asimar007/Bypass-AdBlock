@@ -7,13 +7,13 @@ This extension is not on the Chrome Web Store. Follow the steps below to install
 ## What You Need
 
 - Google Chrome (any recent version)
-- The extension zip file: `bypass-adblock-chrome.zip`
+- The extension zip file: `bypass-adblock-1.0.0-chrome.zip`
 
 ---
 
 ## Step 1 — Download the Zip
 
-Download the latest `bypass-adblock-chrome.zip` from the [Releases](https://github.com/asimar007/Bypass-AdBlock/releases) page.
+Download the latest `bypass-adblock-1.0.0-chrome.zip` from the [Releases](https://github.com/asimar007/Bypass-AdBlock/releases) page.
 
 ---
 
@@ -38,7 +38,7 @@ Double-click the zip → folder appears automatically
 **Linux:**
 
 ```bash
-unzip bypass-adblock-chrome.zip -d bypass-adblock
+unzip bypass-adblock-1.0.0-chrome.zip -d bypass-adblock
 ```
 
 ---
@@ -113,18 +113,18 @@ Chrome on Android does not support extensions. Use **Kiwi Browser** instead:
 
 ## Troubleshooting
 
-**Extension icon not visible**
+### Extension icon not visible
 
 Click the puzzle icon in the toolbar and pin the extension.
 
-**Bypass not working on a site**
+### Bypass not working on a site
 
 Click the extension icon and tap **Bypass Now** to manually trigger it. If it still does not work, the site may use an overlay class or text not yet in the extension's detection list — open an issue on GitHub with the site URL.
 
-**"Load unpacked" button not visible**
+### "Load unpacked" button not visible
 
 Make sure **Developer mode** is turned on at `chrome://extensions`.
 
-**Extension disappears after Chrome update**
+### Extension disappears after Chrome update
 
 Chrome occasionally disables manually loaded extensions after major updates. Go to `chrome://extensions` and click **Enable** on the extension card.
