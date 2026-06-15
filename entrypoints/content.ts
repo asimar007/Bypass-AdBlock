@@ -38,8 +38,7 @@ export default defineContentScript({
     ];
     const CONTAINER_HINTS = ["warn", "overlay", "modal", "adblock", "block", "popup"];
 
-    const matchesOverlay = (text: string) =>
-      OVERLAY_PHRASES.some((p) => text.includes(p));
+    const matchesOverlay = (text: string) => OVERLAY_PHRASES.some((p) => text.includes(p));
 
     const removeOverlays = () => {
       OVERLAY_SELECTORS.forEach((sel) => {
@@ -109,9 +108,13 @@ export default defineContentScript({
         panel.innerHTML = `
           <div style="position:fixed;bottom:20px;right:20px;background:#1e1e2f;color:white;padding:12px;border-radius:8px;z-index:9999;max-width:300px;box-shadow:0 2px 10px black;">
             <strong>Found links</strong><br>
-            ${Array.from(found).slice(0, 5).map(
-              (l) => `<a href="${l}" target="_blank" style="color:#4caf50;display:block;font-size:12px;margin-top:4px;">${l.substring(0, 60)}</a>`,
-            ).join("")}
+            ${Array.from(found)
+              .slice(0, 5)
+              .map(
+                (l) =>
+                  `<a href="${l}" target="_blank" style="color:#4caf50;display:block;font-size:12px;margin-top:4px;">${l.substring(0, 60)}</a>`,
+              )
+              .join("")}
             <button id="close-panel" style="margin-top:8px;background:#f44336;border:none;color:white;padding:4px 8px;border-radius:4px;cursor:pointer;">Close</button>
           </div>`;
         document.body.appendChild(panel);
@@ -169,8 +172,7 @@ export default defineContentScript({
       if (!isSiteEnabled(sites)) return;
       if (document.readyState === "loading")
         document.addEventListener("DOMContentLoaded", runAll, { once: true });
-      else
-        runAll();
+      else runAll();
       startObserver();
     };
 
