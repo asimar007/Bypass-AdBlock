@@ -160,26 +160,32 @@ export default defineContentScript({
       else document.addEventListener("DOMContentLoaded", observe, { once: true });
     };
 
-    // ---- Boot: respect enabled toggle from storage ----
-    chrome.storage.local.get("enabled", (data) => {
-      if (data.enabled === false) return;
+    // ---- Per-site enable check ----
+    const currentHost = location.hostname.replace(/^www\./, "");
 
+    const isSiteEnabled = (sites: string[]) => sites.includes(currentHost);
+
+    const boot = (sites: string[]) => {
+      if (!isSiteEnabled(sites)) return;
       if (document.readyState === "loading")
         document.addEventListener("DOMContentLoaded", runAll, { once: true });
       else
         runAll();
-
       startObserver();
-    });
+    };
 
-    // ---- React to toggle changes without needing a page reload ----
+    chrome.storage.local.get("sites", (data) => boot((data.sites as string[]) || []));
+
+    // ---- React to per-site toggle without needing a page reload ----
     chrome.storage.onChanged.addListener((changes) => {
-      if (!("enabled" in changes)) return;
-      if (changes.enabled.newValue === false) {
-        observer.disconnect();
-      } else {
+      if (!("sites" in changes)) return;
+      const newSites: string[] = (changes.sites.newValue as string[]) || [];
+      const oldSites: string[] = (changes.sites.oldValue as string[]) || [];
+      if (!isSiteEnabled(oldSites) && isSiteEnabled(newSites)) {
         runAll();
         startObserver();
+      } else if (isSiteEnabled(oldSites) && !isSiteEnabled(newSites)) {
+        observer.disconnect();
       }
     });
 
