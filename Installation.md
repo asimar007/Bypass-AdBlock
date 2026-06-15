@@ -13,7 +13,7 @@ This extension is not on the Chrome Web Store. Follow the steps below to install
 
 ## Step 1 — Download the Zip
 
-Download the latest `bypass-adblock-chrome.zip` from the [Releases](https://github.com/your-username/download-bypass/releases) page.
+Download the latest `bypass-adblock-chrome.zip` from the [Releases](https://github.com/asimar007/Bypass-AdBlock/releases) page.
 
 ---
 

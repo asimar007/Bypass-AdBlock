@@ -59,3 +59,5 @@ Page loads
 
 - [Setup Guide](Setup.md) — for developers who want to build or modify the extension
 - [Installation Guide](Installation.md) — install the extension via zip file
+- [GitHub Repository](https://github.com/asimar007/Bypass-AdBlock)
+- [Releases](https://github.com/asimar007/Bypass-AdBlock/releases)

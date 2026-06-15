@@ -17,8 +17,8 @@ This guide is for developers who want to build, modify, or contribute to the ext
 ## 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/download-bypass.git
-cd download-bypass
+git clone https://github.com/asimar007/Bypass-AdBlock.git
+cd Bypass-AdBlock
 ```
 
 ---
