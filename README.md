@@ -12,7 +12,6 @@ Not published on the Chrome Web Store. Install manually via zip — see [Install
 - **Auto bypass on every visit** — once a site is enabled, bypass runs automatically when you open it.
 - **Removes adblock overlays** — detects and removes blocking walls by CSS selector, keyword match, and visual heuristics (works for any language).
 - **Reveals hidden download links** — makes links visible that sites hide when adblock is detected.
-- **Extracts buried links** — scans page scripts for direct download URLs (.zip, .rar, .mp4, .mkv, .pdf).
 - **SPA navigation aware** — re-runs bypass when URL changes without a full page reload (React Router, Vue Router, etc.).
 - **Manual trigger** — "Bypass Now" button in the popup for sites that load overlays dynamically.
 
@@ -35,23 +34,23 @@ Page loads
 
 ## Tech Stack
 
-| Tool | Purpose |
-| --- | --- |
-| [WXT](https://wxt.dev) | Chrome extension framework |
-| React 19 | Popup UI |
-| TypeScript | Type safety |
-| Bun | Package manager and build runner |
+| Tool                   | Purpose                          |
+| ---------------------- | -------------------------------- |
+| [WXT](https://wxt.dev) | Chrome extension framework       |
+| React 19               | Popup UI                         |
+| TypeScript             | Type safety                      |
+| Bun                    | Package manager and build runner |
 
 ---
 
 ## Permissions
 
-| Permission | Why |
-| --- | --- |
-| `activeTab` | Read current tab URL to show the right site in popup |
-| `storage` | Save the list of enabled sites |
-| `scripting` | Inject bypass logic into pages |
-| `host_permissions: <all_urls>` | Run content script on all sites |
+| Permission                     | Why                                                  |
+| ------------------------------ | ---------------------------------------------------- |
+| `activeTab`                    | Read current tab URL to show the right site in popup |
+| `storage`                      | Save the list of enabled sites                       |
+| `scripting`                    | Inject bypass logic into pages                       |
+| `host_permissions: <all_urls>` | Run content script on all sites                      |
 
 ---
 

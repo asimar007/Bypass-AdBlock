@@ -7,13 +7,13 @@ This extension is not on the Chrome Web Store. Follow the steps below to install
 ## What You Need
 
 - Google Chrome (any recent version)
-- The extension zip file: `bypass-adblock-1.0.0-chrome.zip`
+- The extension zip file: `bypass-adblock-1.0.1-chrome.zip`
 
 ---
 
 ## Step 1 — Download the Zip
 
-Download the latest `bypass-adblock-1.0.0-chrome.zip` from the [Releases](https://github.com/asimar007/Bypass-AdBlock/releases) page.
+Download the latest `bypass-adblock-1.0.1-chrome.zip` from the [Releases](https://github.com/asimar007/Bypass-AdBlock/releases) page.
 
 ---
 
@@ -38,7 +38,7 @@ Double-click the zip → folder appears automatically
 **Linux:**
 
 ```bash
-unzip bypass-adblock-1.0.0-chrome.zip -d bypass-adblock
+unzip bypass-adblock-1.0.1-chrome.zip -d bypass-adblock
 ```
 
 ---
