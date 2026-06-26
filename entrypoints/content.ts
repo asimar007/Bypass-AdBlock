@@ -95,39 +95,11 @@ export default defineContentScript({
       });
     };
 
-    // ---- Extract links from scripts ----
-    const extractScriptLinks = () => {
-      const found = new Set<string>();
-      const regex = /https?:\/\/[^\s"'<>]+\.(zip|rar|mp4|mkv|pdf)/gi;
-      document.querySelectorAll("script").forEach((s) => {
-        s.textContent?.match(regex)?.forEach((m) => found.add(m));
-      });
-      if (found.size && !document.getElementById("bypass-panel")) {
-        const panel = document.createElement("div");
-        panel.id = "bypass-panel";
-        panel.innerHTML = `
-          <div style="position:fixed;bottom:20px;right:20px;background:#1e1e2f;color:white;padding:12px;border-radius:8px;z-index:9999;max-width:300px;box-shadow:0 2px 10px black;">
-            <strong>Found links</strong><br>
-            ${Array.from(found)
-              .slice(0, 5)
-              .map(
-                (l) =>
-                  `<a href="${l}" target="_blank" style="color:#4caf50;display:block;font-size:12px;margin-top:4px;">${l.substring(0, 60)}</a>`,
-              )
-              .join("")}
-            <button id="close-panel" style="margin-top:8px;background:#f44336;border:none;color:white;padding:4px 8px;border-radius:4px;cursor:pointer;">Close</button>
-          </div>`;
-        document.body.appendChild(panel);
-        document.getElementById("close-panel")?.addEventListener("click", () => panel.remove());
-      }
-    };
-
     // ---- Run all bypass steps ----
     const runAll = () => {
       injectOverride();
       removeOverlays();
       revealLinks();
-      extractScriptLinks();
     };
 
     // ---- Mutation observer (reconnect/disconnect based on enabled state) ----
@@ -140,7 +112,6 @@ export default defineContentScript({
       // Detect SPA navigation (URL changed without a full page reload)
       if (location.href !== lastUrl) {
         lastUrl = location.href;
-        document.getElementById("bypass-panel")?.remove();
         runAll();
       }
     });
@@ -149,7 +120,6 @@ export default defineContentScript({
     const onUrlChange = () => {
       if (location.href !== lastUrl) {
         lastUrl = location.href;
-        document.getElementById("bypass-panel")?.remove();
         runAll();
       }
     };
